@@ -5,6 +5,12 @@ public class App {
         int select;
 
         Scanner input = new Scanner(System.in);
+        //Professor Oak???
+        /*GOTTA
+         * CATCH
+         * EM
+         * ALL!!!
+         */
         System.out.println("Greetings, young one... welcome to the world. By what name shall your friends call you?");
         String petName = input.nextLine();
 
@@ -25,7 +31,7 @@ public class App {
     }
 
     public static void gameLoop (PetNeeds newPet) {
-        int userSelection; 
+        int userSelection = -1; 
         Scanner input2 = new Scanner(System.in);
 
         while (userSelection != 0) {
@@ -38,13 +44,13 @@ public class App {
                 "5. Put Pet to Bed" +
                 "6. Clean Pet" +
                 "0. Exit");
-            tick();
+            newPet.tick();
             userSelection = input2.nextInt();
-            switch (userSelection) {
-                case 1: manageHunger();
-                        break;
-                case 2: drinkPet();
-            }
+            // switch (userSelection) {
+            //     case 1: manageHunger();
+            //             break;
+            //     case 2: drinkPet();   
+            //}
         }
         
     }
