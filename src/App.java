@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int select;
-
         Scanner input = new Scanner(System.in);
         System.out.println("Greetings, young one... welcome to the world. By what name shall your friends call you?");
         String petName = input.nextLine();
@@ -11,6 +9,7 @@ public class App {
         PetNeeds pet = new PetNeeds(petName);
         
         birthMenu(pet);
+        input.close();
     }
 
     public static void birthMenu (PetNeeds newPet) {
@@ -25,7 +24,7 @@ public class App {
     }
 
     public static void gameLoop (PetNeeds newPet) {
-        int userSelection; 
+        int userSelection = -1; 
         Scanner input2 = new Scanner(System.in);
 
         while (userSelection != 0) {
@@ -33,19 +32,21 @@ public class App {
                 "What would you like to do?" +
                 "1. Feed Pet" +
                 "2. Water Pet" +
-                "3. Play With Pet" +
-                "4. Take Pet to Bathroom" +
-                "5. Put Pet to Bed" +
-                "6. Clean Pet" +
-                "0. Exit");
-            tick();
+                "0. Exit"
+                );
+
             userSelection = input2.nextInt();
             switch (userSelection) {
-                case 1: manageHunger();
+                case 1: newPet.feedPet();
                         break;
-                case 2: drinkPet();
+                case 2: newPet.drinkPet();
+                        break;
+                case 0: userSelection = 0;
+                        input2.close();
+                        break;
+                default: break;
             }
+            newPet.tick();
         }
-        
     }
 }
