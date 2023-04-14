@@ -17,6 +17,15 @@ public class PetNeeds {
         dirtiness = 1;
     }
     
+    public void feedPet() {
+        this.hunger = 0;
+    }
+
+
+    public void drinkPet() {
+        this.thirst = 0;
+    }
+    
     // Simulate the passage of time by degrading the pet's stats
     public void tick() {
         petName += 1;
