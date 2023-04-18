@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
 public class App {
+    private static Scanner input = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
         gameLoop();
     }
 
-    public static PetNeeds birthMenu () {        
-        Scanner input = new Scanner(System.in);
+    public static PetNeeds creationMenu () {        
+        
         System.out.println("Greetings, young one... welcome to the world. By what name shall your friends call you?");
         String petName = input.nextLine();
 
@@ -21,7 +22,7 @@ public class App {
     
         PetNeeds pet = new PetNeeds(petName);
 
-        input.close();
+        
 
         return pet;
 
@@ -29,30 +30,32 @@ public class App {
 
     public static void gameLoop () {
         int userSelection = -1; 
-
+        int option = -1;
+        PetNeeds pet = creationMenu();
         while(userSelection != 0){
-            PetNeeds pet = birthMenu();
             System.out.println(pet);
-            // Scanner action = new Scanner(System.in);
-            System.out.println(
+            System.out.print(
                 "What would you like " + pet.getName() + " to do?" + "\n" +
                 "1. Feed Pet" + "\n" +
                 "2. Water Pet" + "\n" + 
-                "0. Exit" + "\n"
+                "0. Exit" + "\n" +
+                "\nChoose: "
                 );
-                
             
-            // switch (input) {
-            //     case "1": pet.feedPet();
-            //             break;
-            //     case "2": pet.drinkPet();
-            //             break;
-            //     case "0": userSelection = 0;
-            //             action.close();
-            //             break;
-            //     default: break;
-            // }
+            // option = Integer.parseInt(input.nextLine());
+            option = input.nextInt();
+            input.nextLine();
+            switch (option) {
+                case 1: pet.feedPet();
+                        break;
+                case 2: pet.drinkPet();
+                        break;
+                case 0: userSelection = 0;
+                        break;
+                default: break;
+            }
             pet.tick();
         }
+        input.close();
     }
 }
