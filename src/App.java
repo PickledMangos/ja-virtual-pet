@@ -21,9 +21,7 @@ public class App {
         );
     
         PetNeeds pet = new PetNeeds(petName);
-
         
-
         return pet;
 
     }
@@ -33,22 +31,29 @@ public class App {
         int option = -1;
         PetNeeds pet = creationMenu();
         while(userSelection != 0){
-            System.out.println(pet);
+            System.out.println(
+                pet.getName() + "'s stats: " + "\n" +
+                "Hunger: " + pet.getHunger() + "\n" +
+                "Thirst: " + pet.getThirst() + "\n" +
+                "Lonliness: " + pet.getLonliness() + "\n" 
+            );
             System.out.print(
                 "What would you like " + pet.getName() + " to do?" + "\n" +
                 "1. Feed Pet" + "\n" +
                 "2. Water Pet" + "\n" + 
+                "3. Entertain Pet" + "\n" + 
                 "0. Exit" + "\n" +
                 "\nChoose: "
                 );
             
-            // option = Integer.parseInt(input.nextLine());
             option = input.nextInt();
             input.nextLine();
             switch (option) {
-                case 1: pet.feedPet();
+                case 1: pet.setHunger(0);
                         break;
                 case 2: pet.drinkPet();
+                        break;
+                case 3: pet.setLonliness(0);
                         break;
                 case 0: userSelection = 0;
                         break;

@@ -28,7 +28,6 @@ public class PetNeeds {
     
     // Simulate the passage of time by degrading the pet's stats
     public void tick() {
-        petName += 1;
         hunger += 1;
         thirst += 1;
         lonliness += 1;
@@ -61,6 +60,10 @@ public class PetNeeds {
     // Setters
     public void setName(String newName) {
         this.petName = newName;
+    }
+
+    public void setHunger(int newHunger){
+        this.hunger = newHunger;
     }
 
     public void setThirst(int newThirst) {
